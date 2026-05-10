@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "paths": {
+      "@yapcraft/*": ["src/*"]
+    },
+    "typeRoots": ["src/types", "node_modules/@types", "node_modules"],
+    "types": ["node"],
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "input": ["src/*.tsx"]
+}

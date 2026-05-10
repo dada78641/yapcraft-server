@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "YapCraft",
+      "script": "npm",
+      "args": ["run", "server"],
+      "instances": "1",
+      "autorestart": true,
+      "watch": false,
+      "max_memory_restart": "4G"
+    }
+  ]
+}

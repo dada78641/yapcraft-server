@@ -1,0 +1,58 @@
+{
+  "name": "@dada78641/yapcraft-server",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "server": "tsx ./src/index.ts",
+    "login": "tsx ./src/scripts/login/index.ts",
+    "check": "tsc -p ./tsconfig.json --noEmit",
+    "lint": "eslint ."
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./src/types.ts",
+        "default": "./src/types.ts"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dada78641/yapcraft-server.git"
+  },
+  "files": [
+    "src",
+    "readme.md"
+  ],
+  "devDependencies": {
+    "@dada78641/eslint-config": "^1.0.1",
+    "@dada78641/sayserver": "^0.1.1",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.3.0",
+    "@types/proper-lockfile": "^4.1.4",
+    "eslint": "^9.34.0",
+    "jiti": "^2.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.0"
+  },
+  "dependencies": {
+    "@dada78641/env-paths": "^0.1.0",
+    "@dada78641/strim-obstools": "^0.0.5",
+    "@dada78641/strim-prng": "^0.1.0",
+    "@dada78641/strim-bwinfo": "^0.1.0",
+    "@twurple/api": "^8.0.3",
+    "@twurple/auth": "^8.0.3",
+    "@twurple/chat": "^8.0.3",
+    "@twurple/eventsub-base": "^8.0.3",
+    "@twurple/eventsub-ws": "^8.0.3",
+    "better-sqlite3": "^12.8.0",
+    "express": "^5.2.1",
+    "open": "^11.0.0",
+    "proper-lockfile": "^4.1.2"
+  }
+}
