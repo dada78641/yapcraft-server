@@ -4,7 +4,7 @@
 import express, {Request, Response} from 'express';
 import {exchangeCode, AccessToken} from '@twurple/auth';
 import {YapDatabase, type AuthTokenRow} from '@yapcraft/lib/db/index.ts';
-import {scopes} from '@yapcraft/lib/twitch/scopes.ts';
+import {scopes} from '@yapcraft/services/twitch/scopes.ts';
 import type {TwitchConfig} from '@yapcraft/util/config.ts';
 import {env} from '@yapcraft/util/env.ts';
 import {sleep} from '@yapcraft/util/promise.ts';

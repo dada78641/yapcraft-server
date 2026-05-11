@@ -10,7 +10,6 @@ import {getPackageInfo} from '@yapcraft/util/pkg.ts';
 import {TwitchService} from '@yapcraft/services/twitch/index.ts';
 import {TTSService} from '@yapcraft/services/tts/index.ts';
 import {BWService} from '@yapcraft/services/bw/index.ts';
-import {scopes} from '@yapcraft/lib/twitch/scopes.ts';
 import {env} from '@yapcraft/util/env.ts';
 
 interface Services {
