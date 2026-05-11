@@ -29,6 +29,9 @@ export interface ServicesConfig {
       address: string;
     };
   };
+  httpd: {
+    address: string;
+  };
 }
 
 export interface YapConfig {
