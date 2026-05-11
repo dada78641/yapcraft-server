@@ -10,14 +10,14 @@ import {getPackageInfo} from '@yapcraft/util/pkg.ts';
 import {TwitchService} from '@yapcraft/services/twitch/index.ts';
 import {TTSService} from '@yapcraft/services/tts/index.ts';
 import {BWService} from '@yapcraft/services/bw/index.ts';
-import {HttpdService} from '@yapcraft/services/httpd/index.ts';
+import {WebService} from '@yapcraft/services/web/index.ts';
 import {env} from '@yapcraft/util/env.ts';
 
 interface Services {
   twitch: TwitchService,
   tts: TTSService,
   bw: BWService,
-  httpd: HttpdService,
+  web: WebService,
 };
 
 /**
@@ -102,11 +102,11 @@ export class YapServer {
     this.services.twitch = new TwitchService();
     this.services.tts = new TTSService();
     this.services.bw = new BWService();
-    this.services.httpd = new HttpdService();
+    this.services.web = new WebService();
     await this.services.twitch.initialize();
     await this.services.tts.initialize();
     await this.services.bw.initialize();
-    await this.services.httpd.initialize();
+    await this.services.web.initialize();
   }
   
   /**

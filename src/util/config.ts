@@ -29,7 +29,7 @@ export interface ServicesConfig {
       address: string;
     };
   };
-  httpd: {
+  web: {
     address: string;
   };
 }

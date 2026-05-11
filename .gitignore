@@ -4,6 +4,8 @@
 /_test*.*
 /_todo.txt
 /.scratch
+/static/admin
+/static/widgets
 
 # Build
 dist/
