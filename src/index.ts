@@ -15,3 +15,6 @@ async function main() {
 }
 
 main();
+
+export type * from './types.ts';
+export * from './services/tts/index.ts';

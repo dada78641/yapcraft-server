@@ -8,6 +8,7 @@ import {
 } from '@dada78641/sayserver';
 import {type ServicesConfig} from '@yapcraft/util/config.ts';
 import {server} from '@yapcraft/server/index.ts';
+export * from './meta.ts'
 
 interface TTSDefaults {
   [id: string]: {
@@ -75,7 +76,7 @@ export class TTSService {
     };
     const res = await this.apiCall('/api/generate', args) as ResGeneratedUtterance;
     if (!res?.output) {
-      throw new Error('Could not get utterance');
+      throw new Error('Could not fetch utterance (no output)');
     }
     return res.output;
   }

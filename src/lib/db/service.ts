@@ -66,7 +66,7 @@ export class YapDatabase {
   /**
    * Stores a new value for a key-value pair.
    */
-  public saveKeyValue(row: KeyValueRow) {
+  public setKeyValue(row: KeyValueRow) {
     const stmt = this.db.prepare(`
       insert into
         key_value (

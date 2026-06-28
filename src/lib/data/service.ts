@@ -52,8 +52,8 @@ export class YapData {
    * 
    * The value must be a serializable object.
    */
-  public saveKeyValue<T = any>(key: string, value: T) {
-    this.db.saveKeyValue({
+  public setKeyValue<T = any>(key: string, value: T) {
+    this.db.setKeyValue({
       key,
       value: JSON.stringify(value),
       timestamp: Date.now(),

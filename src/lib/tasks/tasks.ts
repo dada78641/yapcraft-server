@@ -52,7 +52,7 @@ export interface RedemptionHandler {
 
 export interface EventHandler<T = any> {
   realm: string;
-  runHandler(eventData: T): void;
+  runHandler(eventData: T): Promise<void>;
 }
 
 /**

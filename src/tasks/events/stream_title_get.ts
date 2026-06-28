@@ -31,7 +31,13 @@ function sanitizeStreamTitle(titleData: stream_title_data | null): stream_title_
         text: 'hello world',
         color: 'yellow',
         style: '3d',
-      }
+      },
+      {
+        text: 'Dada78641',
+        color: 'orange',
+        style: '3d',
+        special: 'dada',
+      },
     ]
   };
 }
