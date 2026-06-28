@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "server": "tsx ./src/index.ts",
+    "serve": "tsx ./src/index.ts",
     "login": "tsx ./src/scripts/login/index.ts",
     "check": "tsc -p ./tsconfig.json --noEmit",
     "lint": "eslint ."
@@ -14,10 +14,14 @@
   },
   "exports": {
     ".": {
-      "import": {
-        "types": "./src/types.ts",
-        "default": "./src/types.ts"
-      }
+      "default": "./src/index.ts"
+    },
+    "./types": {
+      "default": "./src/types.ts"
+    },
+    "./realms": {
+      "types": "./src/tasks/realms/index.ts",
+      "default": "./src/tasks/realms/index.ts"
     }
   },
   "repository": {

@@ -3,7 +3,7 @@
     {
       "name": "YapCraft",
       "script": "npm",
-      "args": ["run", "server"],
+      "args": ["run", "serve"],
       "instances": "1",
       "autorestart": true,
       "watch": false,
