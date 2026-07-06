@@ -12,3 +12,5 @@ export type {stream_countdown, stream_countdown_data} from '../events/stream_cou
 export type {tts_audio, tts_audio_data} from '../events/tts_audio.ts';
 export type {tts_source, tts_source_data} from '../events/tts_source.ts';
 export type {tts_killswitch, tts_killswitch_data} from '../events/tts_killswitch.ts';
+export type {yapcraft_ping, yapcraft_ping_data} from '../events/yapcraft_ping.ts';
+export type {yapcraft_pong, yapcraft_pong_data} from '../events/yapcraft_pong.ts';

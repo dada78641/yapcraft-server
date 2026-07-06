@@ -64,7 +64,9 @@ export class YapTasks {
    * The handler has previously been determined.
    */
   private async runEventHandler(realm: string, data: unknown, handler: EventHandler) {
-    console.log(`running event handler %o`, realm);
+    if (!handler.metadata?.silent) {
+      console.log(`running event handler %o`, realm);
+    }
     try {
       await handler.runHandler(data);
     }

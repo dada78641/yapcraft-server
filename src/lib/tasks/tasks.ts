@@ -50,21 +50,27 @@ export interface RedemptionHandler {
   runRedemption(ev: RedemptionEvent, msg: RedemptionMessage | null, rewardName: string): void;
 };
 
+export interface EventMetadata {
+  silent?: boolean;
+};
+
 export interface EventHandler<T = any> {
   realm: string;
   runHandler(eventData: T): (Promise<void> | void);
-}
+  metadata: EventMetadata;
+};
 
 /**
  * Returns a handler for OBS CustomEvent events.
  */
-export function eventHandler<T = any>(realm: string, fn: (this: {realm: string}, eventData: T) => void) {
+export function eventHandler<T = any>(realm: string, fn: (this: {realm: string}, eventData: T) => void, metadata: EventMetadata = {}): EventHandler {
   const handler = {
     realm,
   };
   return {
     ...handler,
     runHandler: fn.bind(handler),
+    metadata,
   };
 }
 

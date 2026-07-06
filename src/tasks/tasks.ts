@@ -8,6 +8,7 @@ import stream_countdown_get from '@yapcraft/tasks/events/stream_countdown_get.ts
 import stream_countdown_set from '@yapcraft/tasks/events/stream_countdown_set.ts';
 import stream_title_get from '@yapcraft/tasks/events/stream_title_get.ts';
 import stream_title_set from '@yapcraft/tasks/events/stream_title_set.ts';
+import yapcraft_ping from '@yapcraft/tasks/events/yapcraft_ping.ts';
 import TTSRedemption from '@yapcraft/tasks/redemptions/tts.ts';
 
 /**
@@ -25,6 +26,7 @@ export function getTaskHandlers(): TaskHandlers {
       stream_countdown_set,
       stream_title_get,
       stream_title_set,
+      yapcraft_ping,
     ],
   };
 }
