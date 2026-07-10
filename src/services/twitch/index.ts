@@ -3,8 +3,19 @@
 
 import {RefreshingAuthProvider} from '@twurple/auth';
 import {EventSubWsListener} from '@twurple/eventsub-ws';
-import {ApiClient} from '@twurple/api';
+import {ApiClient, type HelixStream} from '@twurple/api';
 import {server} from '@yapcraft/server/index.ts';
+
+export interface StreamStateData {
+  isLive: boolean,
+  viewers: number,
+  streamTitle: string,
+  streamTags: string[],
+  userName: string,
+  gameName: string,
+  gameId: string,
+  startDate: string,
+};
 
 export class TwitchService {
   public apiClient!: ApiClient;
@@ -12,6 +23,50 @@ export class TwitchService {
 
   constructor() {
     
+  }
+
+  /**
+   * Returns basic information about the current stream.
+   * 
+   * This includes e.g. viewer count, current game.
+   */
+  public async getStreamState(): Promise<StreamStateData> {
+    const cached = server.data.getKeyValue<StreamStateData>('twitch_stream_state_data', 5_000);
+    if (cached !== null) {
+      return cached
+    }
+    const stream = await this.apiClient.streams.getStreamByUserId(server.config.twitch.userID);
+    const data = this.wrapStreamStateData(stream);
+    server.data.setKeyValue<StreamStateData>('twitch_stream_state_data', data);
+    return data;
+  }
+
+  /**
+   * Converts a HelixStream response object into a plain object.
+   */
+  private wrapStreamStateData(stream: HelixStream | null): StreamStateData {
+    if (stream === null) {
+      return {
+        isLive: false,
+        viewers: 0,
+        streamTitle: '',
+        streamTags: [],
+        userName: '',
+        gameName: '',
+        gameId: '',
+        startDate: '',
+      };
+    }
+    return {
+      isLive: true,
+      viewers: stream.viewers,
+      streamTitle: stream.title,
+      streamTags: stream.tags,
+      userName: stream.userDisplayName,
+      gameName: stream.gameName,
+      gameId: stream.gameId,
+      startDate: new Date(stream.startDate).toISOString(),
+    };
   }
   
   public async initialize() {

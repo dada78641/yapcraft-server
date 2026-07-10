@@ -28,8 +28,8 @@ export class YapData {
    * This always returns a value; either the decoded JSON for the key;
    * or null if the key row does not exist or the value is not valid JSON.
    * 
-   * Each value has a timestamp of when it was stored; if it's older than our
-   * maxAge value, null is returned instead.
+   * Each value has a timestamp of when it was stored in milliseconds;
+   * if it's older than our maxAge value, null is returned instead.
    */
   public getKeyValue<T = JsonValue>(key: string, maxAge?: number): T | null {
     try {
