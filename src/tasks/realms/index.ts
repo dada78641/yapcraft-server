@@ -16,5 +16,6 @@ function realm<T>() {
 export const realms = {
   stream_title: realm<realmTypes.stream_title_data>()(['get', 'set']),
   stream_countdown: realm<realmTypes.stream_countdown_data>()(['get', 'set']),
+  webamp_state: realm<realmTypes.webamp_state_data>()(['get', 'set']),
   bw_rank: realm<realmTypes.bw_rank_data>()(['get']),
 } as const;
