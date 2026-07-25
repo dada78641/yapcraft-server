@@ -5,6 +5,7 @@ import {type Track} from 'webamp';
 
 export type webamp_tracks_data = {
   tracks: Track[],
+  playFrom?: number,
   action: 'replace' | 'replace_and_play' | 'enqueue',
 };
 

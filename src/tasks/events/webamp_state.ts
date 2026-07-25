@@ -14,6 +14,7 @@ interface Track {
 export type webamp_state_data = {
   currentTrack: Track | null,
   currentStatus: 'PLAYING' | 'STOPPED' | 'PAUSED',
+  trackIDs: number[],
   shuffle: boolean,
   repeat: boolean,
   layout: 'large' | 'medium' | 'medium-minus' | 'small',
