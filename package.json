@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@dada78641/env-paths": "^0.1.0",
-    "@dada78641/strim-obstools": "^0.0.5",
+    "@dada78641/strim-obstools": "^0.0.7",
     "@dada78641/strim-prng": "^0.1.0",
     "@dada78641/strim-bwinfo": "^0.1.0",
     "@twurple/api": "^8.0.3",
@@ -57,6 +57,7 @@
     "better-sqlite3": "^12.8.0",
     "express": "^5.2.1",
     "open": "^11.0.0",
-    "proper-lockfile": "^4.1.2"
+    "proper-lockfile": "^4.1.2",
+    "webamp": "^2.2.0"
   }
 }
