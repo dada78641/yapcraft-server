@@ -1,6 +1,7 @@
 // YapCraft <https://github.com/dada78641/yapcraft-server>
 // © MIT license
 
+import {type TriggerManager} from '@dada78641/strim-obstools';
 import {TwitchService} from '@yapcraft/services/twitch/index.ts';
 import {server} from '@yapcraft/server/index.ts';
 import {getTaskHandlers} from '@yapcraft/tasks/tasks.ts';
@@ -26,6 +27,7 @@ export class YapTasks {
   private userID: string;
   private twitch: TwitchService;
   private eventQueue: Map<QueueKey, EventQueueItem>;
+  private manager!: TriggerManager;
 
   constructor() {
     this.userID = server.config.twitch.userID;
@@ -185,8 +187,21 @@ export class YapTasks {
    * the same user with the same reward ID and same message plain text. Hacky but it works.
    */
   public bindEventHandlers() {
-    const {redemptionTasks, eventHandlers} = getTaskHandlers();
+    const {redemptionTasks, eventHandlers, triggerHandlers} = getTaskHandlers();
     console.log(`%o redemptions initialized`, redemptionTasks.length);
+    console.log(`%o OBS triggers initialized`, triggerHandlers.length);
+
+    // For OBS triggers, create a trigger manager once and bind the callbacks.
+    const manager = server.obs.createTriggerManager(server.name);
+    for (const handler of triggerHandlers) {
+      if (handler.type === 'toggle') {
+        manager.addToggle(handler.sceneItem, handler.callbackHandler.bind(handler));
+      }
+      if (handler.type === 'trigger') {
+        manager.addTrigger(handler.sceneItem, handler.callbackHandler.bind(handler));
+      }
+    }
+    this.manager = manager
 
     // For OBS custom events, ensure that it's tagged with our realm/data structure.
     // If it's not that, it's not one of our internal events, so skip it.

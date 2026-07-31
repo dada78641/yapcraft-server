@@ -3,4 +3,4 @@
 
 import {YapServer} from './server.ts';
 
-export const server = new YapServer();
+export const server = new YapServer('yapcraft');

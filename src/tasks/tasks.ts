@@ -11,6 +11,8 @@ import stream_title_get from '@yapcraft/tasks/events/stream_title_get.ts';
 import stream_title_set from '@yapcraft/tasks/events/stream_title_set.ts';
 import yapcraft_ping from '@yapcraft/tasks/events/yapcraft_ping.ts';
 import TTSRedemption from '@yapcraft/tasks/redemptions/tts.ts';
+import WebcamActiveTrigger from '@yapcraft/tasks/triggers/webcam_active.ts';
+import KillLastTTSTrigger from '@yapcraft/tasks/triggers/kill_last_tts.ts';
 
 /**
  * Returns all tasks.
@@ -29,6 +31,10 @@ export function getTaskHandlers(): TaskHandlers {
       stream_title_get,
       stream_title_set,
       yapcraft_ping,
+    ],
+    triggerHandlers: [
+      WebcamActiveTrigger,
+      KillLastTTSTrigger,
     ],
   };
 }

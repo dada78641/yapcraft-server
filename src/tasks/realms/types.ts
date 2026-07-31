@@ -14,6 +14,7 @@ export type {stream_state, stream_state_data} from '../events/stream_state.ts';
 export type {tts_audio, tts_audio_data} from '../events/tts_audio.ts';
 export type {tts_source, tts_source_data} from '../events/tts_source.ts';
 export type {tts_killswitch, tts_killswitch_data} from '../events/tts_killswitch.ts';
+export type {tts_killswitch_current, tts_killswitch_current_data} from '../events/tts_killswitch_current.ts';
 export type {webamp_action, webamp_action_data} from '../events/webamp_action.ts';
 export type {webamp_tracks, webamp_tracks_data} from '../events/webamp_tracks.ts';
 export type {webamp_state_get, webamp_state_get_data} from '../events/webamp_state_get.ts';

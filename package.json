@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@dada78641/env-paths": "^0.1.0",
-    "@dada78641/strim-obstools": "^0.0.7",
+    "@dada78641/strim-obstools": "file:../../@yapcraft/strim-obstools",
     "@dada78641/strim-prng": "^0.1.0",
     "@dada78641/strim-bwinfo": "^0.1.0",
     "@twurple/api": "^8.0.3",

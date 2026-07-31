@@ -5,11 +5,26 @@ import {
   type EventSubChannelRedemptionAddEvent,
   type EventSubChannelChatMessageEvent,
 } from '@twurple/eventsub-base';
+import {type TriggerCallback, type ToggleCallback} from '@dada78641/strim-obstools';
+
+// A handler for an OBS trigger.
+export type TriggerHandler = {
+  name: string,
+  type: 'toggle',
+  sceneItem: string,
+  callbackHandler: ToggleCallback,
+} | {
+  name: string,
+  type: 'trigger',
+  sceneItem: string,
+  callbackHandler: TriggerCallback,
+};
 
 // All actionable task handlers.
 export interface TaskHandlers {
-  redemptionTasks: RedemptionHandler[]
-  eventHandlers: EventHandler[]
+  redemptionTasks: RedemptionHandler[],
+  eventHandlers: EventHandler[],
+  triggerHandlers: TriggerHandler[],
 };
 
 // For redemptions that take text input, we'll fetch the message parts.

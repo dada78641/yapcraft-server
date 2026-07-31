@@ -40,6 +40,7 @@ interface Services {
  * So basically, all tasks can safely assume that all the server's services are always available.
  */
 export class YapServer {
+  public name!: string;
   public db!: YapDatabase;
   public data!: YapData;
   public tasks!: YapTasks;
@@ -50,7 +51,8 @@ export class YapServer {
   public obs!: ObsTools;
   public services = {} as Services;
 
-  constructor() {
+  constructor(name: string) {
+    this.name = name;
     const pkg = getPackageInfo();
     console.log(`${pkg.name} ${pkg.version}`);
   }
@@ -125,8 +127,6 @@ export class YapServer {
     this.obs.once('ready', async () => {
       console.log('connected to OBS!', new Date());
       this.startServices();
-      // const scenes = await this.obs.obs.call('GetSceneList');
-      // console.log('scenes', scenes);
     });
   }
 }
