@@ -3,10 +3,10 @@
 
 import {server} from '@yapcraft/server/index.ts';
 
-export default new class WebcamActiveTrigger {
-  public readonly name = 'webcam_active';
+export default new class StreamerCamTrigger {
+  public readonly name = 'streamer_cam';
   public readonly type = 'toggle';
-  public readonly sceneItem = 'WebcamActive';
+  public readonly sceneItem = 'StreamerCam';
 
   public callbackHandler(value: boolean) {
     this.toggleWebcam(value);
@@ -21,7 +21,7 @@ export default new class WebcamActiveTrigger {
           sceneUuid: webcamEmbed._scene?.sceneUuid,
           sceneItemId: webcamEmbed.sceneItemId,
           sceneItemEnabled: value,
-        }
+        },
       })
     ));
   }

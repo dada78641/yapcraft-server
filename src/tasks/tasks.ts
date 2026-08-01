@@ -11,8 +11,15 @@ import stream_title_get from '@yapcraft/tasks/events/stream_title_get.ts';
 import stream_title_set from '@yapcraft/tasks/events/stream_title_set.ts';
 import yapcraft_ping from '@yapcraft/tasks/events/yapcraft_ping.ts';
 import TTSRedemption from '@yapcraft/tasks/redemptions/tts.ts';
-import WebcamActiveTrigger from '@yapcraft/tasks/triggers/webcam_active.ts';
+import DisplayLutTrigger from '@yapcraft/tasks/triggers/display_lut.ts';
+import EsportsLogoTrigger from '@yapcraft/tasks/triggers/esports_logo.ts';
 import KillLastTTSTrigger from '@yapcraft/tasks/triggers/kill_last_tts.ts';
+import StreamerCamTrigger from '@yapcraft/tasks/triggers/streamer_cam.ts';
+import TwitchAdTrigger from '@yapcraft/tasks/triggers/twitch_ad.ts';
+import TwitchClipTrigger from '@yapcraft/tasks/triggers/twitch_clip.ts';
+import WinampNextTrigger from '@yapcraft/tasks/triggers/winamp_next.ts';
+import WinampPlayTrigger from '@yapcraft/tasks/triggers/winamp_play.ts';
+import WinampPreviousTrigger from '@yapcraft/tasks/triggers/winamp_previous.ts';
 
 /**
  * Returns all tasks.
@@ -33,8 +40,15 @@ export function getTaskHandlers(): TaskHandlers {
       yapcraft_ping,
     ],
     triggerHandlers: [
-      WebcamActiveTrigger,
+      DisplayLutTrigger,
+      EsportsLogoTrigger,
       KillLastTTSTrigger,
+      StreamerCamTrigger,
+      TwitchAdTrigger,
+      TwitchClipTrigger,
+      WinampNextTrigger,
+      WinampPlayTrigger,
+      WinampPreviousTrigger,
     ],
   };
 }
