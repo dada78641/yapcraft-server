@@ -9,6 +9,6 @@ export default new class TwitchClipTrigger {
   public readonly sceneItem = 'TwitchClip';
 
   public callbackHandler() {
-    console.log('todo trigger clip');
+    server.services.twitch.createClip();
   }
 }

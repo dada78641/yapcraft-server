@@ -9,6 +9,6 @@ export default new class TwitchAdTrigger {
   public readonly sceneItem = 'TwitchAd';
 
   public callbackHandler() {
-    console.log('todo trigger ad on twitch');
+    server.services.twitch.runChannelAd();
   }
 }

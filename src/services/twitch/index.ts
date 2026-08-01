@@ -5,24 +5,14 @@ import {RefreshingAuthProvider} from '@twurple/auth';
 import {EventSubWsListener} from '@twurple/eventsub-ws';
 import {ApiClient, type HelixStream} from '@twurple/api';
 import {server} from '@yapcraft/server/index.ts';
-
-export interface StreamStateData {
-  isLive: boolean,
-  viewers: number,
-  streamTitle: string,
-  streamTags: string[],
-  userName: string,
-  gameName: string,
-  gameId: string,
-  startDate: string,
-};
+import {type StreamStateData} from './types.ts';
+import {wrapStreamStateData} from './util.ts';
 
 export class TwitchService {
   public apiClient!: ApiClient;
   public eventSubListener!: EventSubWsListener;
 
   constructor() {
-    
   }
 
   /**
@@ -36,37 +26,43 @@ export class TwitchService {
       return cached
     }
     const stream = await this.apiClient.streams.getStreamByUserId(server.config.twitch.userID);
-    const data = this.wrapStreamStateData(stream);
+    const data = wrapStreamStateData(stream);
     server.data.setKeyValue<StreamStateData>('twitch_stream_state_data', data);
     return data;
   }
 
   /**
-   * Converts a HelixStream response object into a plain object.
+   * Creates a clip.
    */
-  private wrapStreamStateData(stream: HelixStream | null): StreamStateData {
-    if (stream === null) {
-      return {
-        isLive: false,
-        viewers: 0,
-        streamTitle: '',
-        streamTags: [],
-        userName: '',
-        gameName: '',
-        gameId: '',
-        startDate: '',
-      };
+  public async createClip(hasDelay: boolean = true, durationSeconds: number = 30) {
+    const {userID} = server.config.twitch;
+    try {
+      const clipID = await this.apiClient.clips.createClip({
+        channel: userID,
+        createAfterDelay: hasDelay,
+        duration: durationSeconds,
+      });
+      console.log(`created clip of ${durationSeconds}s, id: ${clipID}`);
     }
-    return {
-      isLive: true,
-      viewers: stream.viewers,
-      streamTitle: stream.title,
-      streamTags: stream.tags,
-      userName: stream.userDisplayName,
-      gameName: stream.gameName,
-      gameId: stream.gameId,
-      startDate: new Date(stream.startDate).toISOString(),
-    };
+    catch (err) {
+      console.error('could not create clip:', err);
+      throw err;
+    }
+  }
+
+  /**
+   * Runs an ad on the channel.
+   */
+  public async runChannelAd(durationSeconds: 30 | 60 | 90 | 120 | 150 | 180 = 30) {
+    const {userID} = server.config.twitch;
+    try {
+      await this.apiClient.channels.startChannelCommercial(userID, durationSeconds);
+      console.log(`ad running for ${durationSeconds}s`);
+    }
+    catch (err) {
+      console.error('could not run ad break:', err);
+      throw err;
+    }
   }
   
   public async initialize() {
